@@ -10,18 +10,39 @@ class Hangman:
         self.word = random.choice(word_list)
         self.word_guessed = []
         self.word_guessed.extend("_" for i in range(len(self.word)))
-        self.num_letters = 
+        self.num_letters = len(set(self.word))
         self.list_letters = []
         print(f"The mystery word has {len(self.word)} characters")
         print(self.word_guessed)
         pass
 
-    def check_letter(self, letter) -> None:
+    def check_letter(self, letter):
+        if letter in self.word:
+            self.num_letters -= 1
+
+            for index, character in enumerate(self.word):
+                if character == letter:
+                    self.word_guessed[index] = letter
+
+            print (f'Nice! {letter} is in the word!')       
+            print (self.word_guessed)
+            if self.num_letters == 0:
+                print ('Congratulations! You won!')
+        else:
+            self.num_lives -=1
+            print (f'Sorry {letter} is not in the word.')
+            if self.num_lives == 0:
+                print (f'You ran out of lives. The word was {self.word}.')
+            else:
+                print (f'You have {self.num_lives} lives left.')
+                print (self.word_guessed)
+                
         pass
 
     def ask_letter(self):
-        while 2 > 1:
-            letter = input("Please enter a single letter: ")
+        while self.num_lives > 0 and self.num_letters > 0:
+            letter = input("Please enter a single letter: ").lower()
+            
             if len(letter) != 1:
                 print("Please enter just one character")
             
@@ -30,8 +51,7 @@ class Hangman:
            
             else:
                 self.list_letters.append(letter)
-                print(*self.list_letters)
-        
+                self.check_letter(letter)       
         
         pass
 
