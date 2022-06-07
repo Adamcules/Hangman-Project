@@ -50,7 +50,6 @@ class Hangman:
         self.list_letters = []
         print(f"The mystery word has {len(self.word)} characters")
         print(self.word_guessed)
-        pass
 
     def check_letter(self, letter) -> None:
         '''
@@ -77,14 +76,21 @@ class Hangman:
                 print ('Congratulations! You won!')
         else:
             self.num_lives -=1
-            print (f'Sorry {letter} is not in the word.')
+            print (f'Sorry {letter} is not in the word.\n')
             if self.num_lives == 0:
-                print (f'You ran out of lives. The word was {self.word}.')
+                print ("   O  \n", "/", "¦", "\\\n", " /", "\\\n")
+                print (f'You ran out of lives. The word was {self.word}.\n')
             else:
-                print (f'You have {self.num_lives} lives left.')
-                print (self.word_guessed)
-                
-        pass
+                if self.num_lives == 4:
+                    print ("   O   \n")
+                elif self.num_lives == 3:
+                    print ("   O  \n", "/\n")
+                elif self.num_lives == 2:
+                    print ("   O  \n", "/", "¦\n")
+                elif self.num_lives == 1:
+                    print ("   O  \n", "/", "¦", "\\\n")
+                print (f'You have {self.num_lives} lives left.\n')
+                print (self.word_guessed, "\n")
 
     def ask_letter(self):
         '''
@@ -106,14 +112,12 @@ class Hangman:
                 self.list_letters.append(letter)
                 self.check_letter(letter)       
         
-        pass
 
 def play_game(word_list):
     # As an aid, part of the code is already provided:
     game = Hangman(word_list, num_lives=5)
     game.ask_letter()
 
-    pass
 
 if __name__ == '__main__':
     word_list = ['apple', 'banana', 'orange', 'pear', 'strawberry', 'watermelon']
