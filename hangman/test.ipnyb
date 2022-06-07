@@ -1,6 +1,0 @@
-print(2 + 3)
-
-print(round(10 / 3, 4))
-print(type(None))
-print("Adam")
-print(2*2)
