@@ -32,8 +32,17 @@ class Hangman:
             self.num_lives -=1
             print (f'Sorry {letter} is not in the word.\n')
             if self.num_lives == 0:
+                print ("   O  \n", "/", "¦", "\\\n", " /", "\\\n")
                 print (f'You ran out of lives. The word was {self.word}.\n')
             else:
+                if self.num_lives == 4:
+                    print ("   O   \n")
+                elif self.num_lives == 3:
+                    print ("   O  \n", "/\n")
+                elif self.num_lives == 2:
+                    print ("   O  \n", "/", "¦\n")
+                elif self.num_lives == 1:
+                    print ("   O  \n", "/", "¦", "\\\n")
                 print (f'You have {self.num_lives} lives left.\n')
                 print (self.word_guessed, "\n")
                 
@@ -51,9 +60,7 @@ class Hangman:
            
             else:
                 self.list_letters.append(letter)
-                self.check_letter(letter)       
-        
-
+                self.check_letter(letter)        
 
 
 def play_game(word_list):
