@@ -1,4 +1,5 @@
 Hangman Project README
+
 Assigned project to create 'Hangman' game. Introduction to Python programming including creation of classes and methods and calling these functions.
 
 
