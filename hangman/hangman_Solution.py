@@ -44,12 +44,11 @@ class Hangman:
         self.word_list = word_list
         self.num_lives = num_lives
         self.word = random.choice(word_list)
-        self.word_guessed = []
-        self.word_guessed.extend("_" for i in range(len(self.word)))
+        self.word_guessed = ["_"] * len(self.word)
         self.num_letters = len(set(self.word))
         self.list_letters = []
-        print(f"The mystery word has {len(self.word)} characters")
-        print(self.word_guessed)
+        print(f"The mystery word has {len(self.word)} characters\n")
+        print(self.word_guessed, "\n")
 
     def check_letter(self, letter) -> None:
         '''
@@ -63,6 +62,7 @@ class Hangman:
             The letter to be checked
 
         '''
+    def check_letter(self, letter):
         if letter in self.word:
             self.num_letters -= 1
 
@@ -70,10 +70,10 @@ class Hangman:
                 if character == letter:
                     self.word_guessed[index] = letter
 
-            print (f'Nice! {letter} is in the word!')       
-            print (self.word_guessed)
+            print (f'Nice! {letter} is in the word!\n')       
+            print (self.word_guessed, "\n")
             if self.num_letters == 0:
-                print ('Congratulations! You won!')
+                print ('Congratulations! You won!\n')
         else:
             self.num_lives -=1
             print (f'Sorry {letter} is not in the word.\n')
@@ -93,24 +93,18 @@ class Hangman:
                 print (self.word_guessed, "\n")
 
     def ask_letter(self):
-        '''
-        Asks the user for a letter and checks two things:
-        1. If the letter has already been tried
-        2. If the character is a single character
-        If it passes both checks, it calls the check_letter method.
-        '''
         while self.num_lives > 0 and self.num_letters > 0:
             letter = input("Please enter a single letter: ").lower()
-            
+
             if len(letter) != 1:
-                print("Please enter just one character")
+                print("Please enter just one character\n")
             
             elif letter in self.list_letters:
-                print(f'{letter} was already tried')
+                print(f'{letter} was already tried\n')
            
             else:
                 self.list_letters.append(letter)
-                self.check_letter(letter)       
+                self.check_letter(letter)        
         
 
 def play_game(word_list):
