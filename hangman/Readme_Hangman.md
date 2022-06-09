@@ -82,5 +82,5 @@ Happy with code as game runs exactly as desired. Was able to add basic visualisa
         print (f'You have {self.num_lives} lives left.\n')
         print (self.word_guessed, "\n")
 
-Improvements to the game could include the user being able to import their own word list and also be able to set a difficulty rating. 
+Improvements to the game could include the user being able to import their own word list and also be able to set different difficulty ratings 
 
